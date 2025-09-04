@@ -14,7 +14,11 @@ export class UsuariosService {
     ) {}
 
     findAll() {
-        return this.usuariosRepo.find();
+        return this.usuariosRepo.find({
+            order: {
+                id: 'ASC'
+            }
+        });
     }
 
     findOne(id: number) {
