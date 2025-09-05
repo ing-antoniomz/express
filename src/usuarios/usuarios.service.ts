@@ -26,7 +26,7 @@ export class UsuariosService {
     }
 
     async create(usuario: CreateUsuarioDto) {
-        const existeUser = await this.usuariosRepo.findOne({ where: { user: usuario.user } });
+        const existeUser = await this.usuariosRepo.findOne({ where: { username: usuario.username } });
         if (existeUser) throw new ConflictException('El usuario ya existe');
 
         const existeEmail = await this.usuariosRepo.findOne({ where: { email: usuario.email } });
@@ -46,8 +46,8 @@ export class UsuariosService {
     if (!usuario) throw new NotFoundException('Usuario no encontrado');
 
     // Validar que el nuevo user no exista en otro registro
-    if (usuarioData.user && usuarioData.user !== usuario.user) {
-        const existeUser = await this.usuariosRepo.findOne({ where: { user: usuarioData.user } });
+    if (usuarioData.username && usuarioData.username !== usuario.username) {
+        const existeUser = await this.usuariosRepo.findOne({ where: { username: usuarioData.username } });
         if (existeUser) throw new ConflictException('El usuario ya existe');
         }
 

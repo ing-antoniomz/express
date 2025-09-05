@@ -12,7 +12,7 @@ export class CreateUsuarioDto {
     @IsString()
     @IsNotEmpty()
     @MaxLength(50)
-    user: string;
+    username: string;
 
     @IsString()
     @IsNotEmpty()
